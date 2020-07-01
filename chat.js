@@ -1,16 +1,19 @@
 $(function() {
     var minValue = 3500;
     var maxValue = 5000;
+    var last_input = minValue;
     var num = 0;
     const trigger = [
-        "Bargain", ["OK", "ok", "Ok"]
+        "Bargain", ["OK", "ok", "Ok"],
+        ["too high", "high", "no", "NO", "No"]
 
     ];
 
     // These are bot responses, paired in order with the above 'trigger' phrases
 
     const reply = [
-        "Okay, Please Enter your Price", ["Great! Let's close the deal! Discount will be added to your cart."]
+        "Okay, Please Enter your Price", ["Great! Let's close the deal! Discount will be added to your cart."],
+        ["How about ?"]
     ];
 
     // This is a small set of basically random 'catch alls' for anything that the user enters outside of the possible trigger phrases
@@ -23,28 +26,31 @@ $(function() {
 
     function output(input) {
         if (input.match(/^-{0,1}\d+$/)) {
-            if (input >= maxValue) {
+            var intinput = parseInt(input);
+            if (intinput >= maxValue) {
                 return "Okay, Let's close the deal then!";
-            } else if (input < minValue) {
+            } else
+            if (intinput < minValue) {
                 return "That will be my loss. I can't accept the deal. Little Negotiation is acceptable.";
             } else {
                 num = num + 1;
                 var response = ""
                 var price = Math.floor(Math.floor(Math.random() * (maxValue - minValue)) + (minValue + (maxValue - minValue) / 2));
-                if (input >= price) {
-                    price = Math.floor(Math.floor(Math.random() * (maxValue - input)) + (price + (maxValue - price) / 2));
+                if (intinput >= price) {
+                    price = Math.floor(Math.floor(Math.random() * (maxValue - intinput)) + (price + (maxValue - price) / 2));
                     response = "I think that is low, We can give it to you at price " + price;
                 }
                 if (price >= maxValue) {
                     price = maxValue - (price - maxValue);
                 }
-                if (price <= input) {
+                if (price <= intinput) {
                     price = maxValue;
                     response = "The best we can do is " + price;
                     return response;
                 }
                 console.log(maxValue);
                 maxValue = price;
+                last_input = intinput;
                 response = "We can give it to you for " + price;
                 return response;
             }
@@ -85,6 +91,11 @@ $(function() {
 
             //update DOM
             // console.log(product);
+            if (product === "How about ? ") {
+                var price;
+                price = Math.floor(Math.floor(Math.random() * (maxValue - last_input)) + (last_input + (maxValue - last_input) / 2));
+                product = product + price;
+            }
             return product;
         }
     }
