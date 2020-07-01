@@ -4,7 +4,7 @@ $(function() {
     var last_input = minValue;
     var num = 0;
     const trigger = [
-        "Bargain", ["OK", "ok", "Ok"],
+        "Bargain", ["OK", "ok", "Ok", "Okay", "okay", "oka", "Oka"],
         ["too high", "high", "no", "NO", "No"]
 
     ];
