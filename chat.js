@@ -5,7 +5,7 @@ $(function() {
     var last_price = minValue;
     var num = 0;
     const trigger = [
-        "Bargain", ["OK", "ok", "Ok", "Okay", "okay", "oka", "Oka"],
+        "Bargain", ["OK", "ok", "Ok", "Okay", "okay", "oka", "Oka", "sure", "Sure", "yes", "Yes", "ya", "Ya"],
         ["too high", "high", "no", "NO", "No"]
 
     ];
@@ -13,7 +13,7 @@ $(function() {
     // These are bot responses, paired in order with the above 'trigger' phrases
 
     const reply = [
-        "Okay, Please Enter your Price", ["Great! Let's close the deal! Discount will be added to your cart."],
+        "Okay, Please Enter your Price", ["Great! Discount will be added to your cart. Don't Forget to check-out."],
         ["How about ? "]
     ];
 
@@ -29,7 +29,7 @@ $(function() {
         if (input.match(/^-{0,1}\d+$/)) {
             var intinput = parseInt(input);
             if (intinput >= maxValue) {
-                return "Okay, Let's close the deal then!";
+                return "Okay, Let's close the deal then?";
             } else
             if (intinput < minValue) {
                 return "That will be my loss. I can't accept the deal. Little Negotiation is acceptable.";
