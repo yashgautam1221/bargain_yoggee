@@ -1,7 +1,7 @@
 $(function() {
     var minValue = 3500;
     var maxValue = 5000;
-    var last_input = minValue;
+    var last_input = 0;
     var last_price = minValue;
     var num = 0;
     const trigger = [
@@ -28,12 +28,13 @@ $(function() {
     function output(input) {
         if (input.match(/^-{0,1}\d+$/)) {
             var intinput = parseInt(input);
+
             if (intinput === last_input) {
-                return "That is low !";
+                return "Enter another amount please!";
             }
             if (intinput >= maxValue) {
                 return "Okay, Let's close the deal then?";
-            } else if (intinput < minValue) {
+            } else if (intinput <= minValue) {
                 return "That will be my loss. I can't accept the deal. Little Negotiation is acceptable.";
             } else {
                 num = num + 1;
