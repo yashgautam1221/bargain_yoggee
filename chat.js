@@ -2,6 +2,7 @@ $(function() {
     var minValue = 3500;
     var maxValue = 5000;
     var last_input = minValue;
+    var last_price = minValue;
     var num = 0;
     const trigger = [
         "Bargain", ["OK", "ok", "Ok", "Okay", "okay", "oka", "Oka"],
@@ -13,7 +14,7 @@ $(function() {
 
     const reply = [
         "Okay, Please Enter your Price", ["Great! Let's close the deal! Discount will be added to your cart."],
-        ["How about ?"]
+        ["How about ? "]
     ];
 
     // This is a small set of basically random 'catch alls' for anything that the user enters outside of the possible trigger phrases
@@ -51,6 +52,7 @@ $(function() {
                 console.log(maxValue);
                 maxValue = price;
                 last_input = intinput;
+                last_price = price;
                 response = "We can give it to you for " + price;
                 return response;
             }
@@ -92,9 +94,7 @@ $(function() {
             //update DOM
             // console.log(product);
             if (product === "How about ? ") {
-                var price;
-                price = Math.floor(Math.floor(Math.random() * (maxValue - last_input)) + (last_input + (maxValue - last_input) / 2));
-                product = product + price;
+                return output(String(last_input));
             }
             return product;
         }
