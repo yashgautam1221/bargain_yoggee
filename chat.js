@@ -28,10 +28,12 @@ $(function() {
     function output(input) {
         if (input.match(/^-{0,1}\d+$/)) {
             var intinput = parseInt(input);
+            if (intinput === last_input) {
+                return "That is low !";
+            }
             if (intinput >= maxValue) {
                 return "Okay, Let's close the deal then?";
-            } else
-            if (intinput < minValue) {
+            } else if (intinput < minValue) {
                 return "That will be my loss. I can't accept the deal. Little Negotiation is acceptable.";
             } else {
                 num = num + 1;
