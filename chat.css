@@ -54,7 +54,7 @@
 }
 
 .chat-box-header {
-    background: #5A5EB9;
+    background: #c32323;
     height: 70px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -185,9 +185,9 @@
 }
 
 .cm-msg-text {
-    background: white;
+    background: #413873;
     padding: 10px 15px 10px 15px;
-    color: #666;
+    color: white;
     max-width: 75%;
     float: left;
     margin-left: 10px;
@@ -203,7 +203,7 @@
 .chat-msg.self>.cm-msg-text {
     float: right;
     margin-right: 10px;
-    background: #5A5EB9;
+    background: #c32323;
     color: white;
 }
 
