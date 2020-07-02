@@ -29,7 +29,7 @@ $(function() {
         if (input.match(/^-{0,1}\d+$/)) {
             var intinput = parseInt(input);
 
-            if (intinput === last_input) {
+            if (intinput <= last_input) {
                 return "Enter another amount please!";
             }
             if (intinput >= maxValue) {
