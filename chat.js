@@ -28,17 +28,24 @@ $(function() {
     function output(input) {
         if (input.match(/^-{0,1}\d+$/)) {
             var intinput = parseInt(input);
+            num = num + 1;
+            var response = "";
+            if (num > 3) {
+                response = "Sorry to say that but you can't bargain anymore. You can buy the product at given last price! ";
+                return response;
+            }
 
             if (intinput <= last_input) {
-                return "Enter another amount please!";
+                response = "Enter another amount please!";
+                return response;
             }
             if (intinput >= maxValue) {
-                return "Okay, Let's close the deal then?";
+                response = "Okay, Let's close the deal then?";
+                return response;
             } else if (intinput <= minValue) {
-                return "That will be my loss. I can't accept the deal. Little Negotiation is acceptable.";
+                response = "That will be my loss. I can't accept the deal. Little Negotiation is acceptable.";
+                return response;
             } else {
-                num = num + 1;
-                var response = ""
                 var price = Math.floor(Math.floor(Math.random() * (maxValue - minValue)) + (minValue + (maxValue - minValue) / 2));
                 if (intinput >= price) {
                     price = Math.floor(Math.floor(Math.random() * (maxValue - intinput)) + (price + (maxValue - price) / 2));
@@ -148,6 +155,11 @@ $(function() {
             $("#chat-input").val('');
         }
         $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight }, 1000);
+        if (num > 3) {
+            setTimeout(function() {
+                location.reload();
+            }, 3000);
+        }
     }
 
 
