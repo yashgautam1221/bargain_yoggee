@@ -1,2 +1,2 @@
 # bargain_yoggee
-Chat bot to bargain max 3 times on the ecommerce site 
+Chat bot using javascript to bargain max 3 times on the ecommerce site 
